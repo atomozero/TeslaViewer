@@ -6,6 +6,9 @@ Drop in the contents of a `TeslaCam/SentryClips` (or `SavedClips`) folder from a
 
 If TeslaViewer for Haiku saves you time, consider supporting development: [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-atomozero-yellow?logo=buymeacoffee)](https://buymeacoffee.com/atomozero)
 
+## Screenshot
+
+![TeslaViewer v1.0](screenshots/TeslaViewer_V.1.0.png)
 
 ## Features
 
