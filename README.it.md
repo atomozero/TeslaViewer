@@ -2,7 +2,7 @@
 
 App nativa per **Haiku** che permette di rivedere le registrazioni Sentry / Dashcam di una Tesla, con vista sincronizzata delle 4 telecamere, lista eventi navigabile, mappa GPS e diverse funzioni di review.
 
-I file Tesla previsti sono quelli che si trovano sulla chiavetta USB della macchina nella cartella `TeslaCam/SentryClips` o `TeslaCam/SavedClips` — ogni evento è una sotto-cartella con i 4 video MP4 (uno per camera) per ogni minuto registrato e un file `event.json` con i metadati.
+I file Tesla previsti sono quelli che si trovano sulla chiavetta USB della macchina nella cartella `TeslaCam/SentryClips` o `TeslaCam/SavedClips`. Ogni evento è una sotto-cartella con i 4 video MP4 (uno per camera) per ogni minuto registrato e un file `event.json` con i metadati.
 
 ## Funzionalità
 
@@ -29,7 +29,7 @@ I file Tesla previsti sono quelli che si trovano sulla chiavetta USB della macch
 - **Click sulle coordinate GPS** nella info bar dell'app principale → apre la mappa centrata su quell'evento.
 
 ### Esportazione
-- **Snapshot PNG** del frame corrente della camera attiva — salvato nella cartella dell'evento come `snapshot_<Camera>_<HH-MM-SS>.png`.
+- **Snapshot PNG** del frame corrente della camera attiva, salvato nella cartella dell'evento come `snapshot_<Camera>_<HH-MM-SS>.png`.
 - **Export 4-up MP4**: ricompone le 4 camere in un unico file `.mp4` (codec MPEG-4) via `ffmpeg`. Log dell'esportazione accanto al file.
 
 ### Camera mapping (calibrazione)
@@ -45,8 +45,8 @@ Vengono salvate in `~/config/settings/TeslaViewer`:
 ## Requisiti
 
 - **Haiku** (testato su hrev59783, x86_64).
-- `ffmpeg` (per l'export 4-up — pacchetto `ffmpeg6` da HaikuDepot).
-- `curl` (per scaricare le tile OSM — già presente in Haiku base).
+- `ffmpeg` (per l'export 4-up, pacchetto `ffmpeg6` da HaikuDepot).
+- `curl` (per scaricare le tile OSM, già presente in Haiku base).
 - Toolchain `g++` con C++17.
 
 Le librerie collegate sono tutte di sistema: `libbe`, `libmedia`, `libtracker`, `libtranslation`, `libroot`.
@@ -157,7 +157,7 @@ Le tile OSM vengono scaricate da `https://tile.openstreetmap.org/{z}/{x}/{y}.png
 
 ## Note / Limitazioni
 
-- I video Sentry Tesla **non contengono traccia audio** — l'app non riproduce audio (verificato con `ffprobe`).
+- I video Sentry Tesla **non contengono traccia audio**, l'app non riproduce audio (verificato con `ffprobe`).
 - La mappatura del campo `camera` di `event.json` è euristica: 0/6 sono affidabili (Front/Back), gli altri (5, 7…) variano e vanno calibrati con `File → Camera mapping...`.
 - L'export usa codec **MPEG-4** perché `libx264` non è incluso nel pacchetto `ffmpeg6` di Haiku. La qualità è buona ma il file è circa 2× rispetto a x264.
 - Le tile OSM rispettano la [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/) (User-Agent identificativo, cache locale, traffico contenuto).

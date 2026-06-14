@@ -2,7 +2,7 @@
 
 Native Haiku app to review your Tesla Sentry / Dashcam recordings: 4-camera synchronized playback, event list with thumbnails, GPS map with OpenStreetMap tiles, alarm timeline markers, snapshots and 4-up MP4 export.
 
-Drop in the contents of a `TeslaCam/SentryClips` (or `SavedClips`) folder from a Tesla USB drive and you're ready to go — no conversion, no transcoding, no internet (except for map tiles).
+Drop in the contents of a `TeslaCam/SentryClips` (or `SavedClips`) folder from a Tesla USB drive and you're ready to go. No conversion, no transcoding, no internet (except for map tiles).
 
 If TeslaViewer for Haiku saves you time, consider supporting development: [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-atomozero-yellow?logo=buymeacoffee)](https://buymeacoffee.com/atomozero)
 
@@ -62,8 +62,8 @@ The window opens on the last folder you used (default: `/boot/home/Desktop/Tesla
 
 Requires Haiku with GCC (C++17) and the following packages:
 
-- `ffmpeg6` — for the 4-up MP4 export (from HaikuDepot)
-- `curl` — for downloading OSM tiles (already in Haiku base)
+- `ffmpeg6` for the 4-up MP4 export (from HaikuDepot)
+- `curl` for downloading OSM tiles (already in Haiku base)
 - Standard system libraries (`libbe`, `libmedia`, `libtracker`, `libtranslation`)
 
 ```
@@ -118,7 +118,7 @@ Sample `event.json`:
 
 ## Notes
 
-- Tesla Sentry videos **have no audio track** by design — the app does not play audio.
+- Tesla Sentry videos **have no audio track** by design, the app does not play audio.
 - The `camera` field in `event.json` is a numeric id whose mapping changes per firmware. Use `File → Camera mapping...` to assign each id you see in your events to the right physical camera; the mapping is saved.
 - Export uses **MPEG-4** because `libx264` is not bundled with Haiku's `ffmpeg6`. The output plays everywhere; file size is roughly 2× compared to x264.
 - OSM tile traffic is rate-limited by their [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/). The app caches every tile to disk and identifies itself with a proper `User-Agent`.
