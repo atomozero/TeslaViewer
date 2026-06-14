@@ -17,7 +17,7 @@ COPYRIGHT="2026 atomozero"
 LICENSE="MIT"
 REVISION="1"
 SOURCE_URI="https://github.com/atomozero/TeslaViewer/archive/refs/tags/v$portVersion.tar.gz"
-CHECKSUM_SHA256=""
+CHECKSUM_SHA256="d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
 SOURCE_DIR="TeslaViewer-$portVersion"
 
 ARCHITECTURES="x86_64"
