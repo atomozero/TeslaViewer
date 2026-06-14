@@ -1,0 +1,22 @@
+# Build artifacts
+obj/
+TeslaViewer
+*.o
+*.d
+
+# Editor / IDE
+*.swp
+*~
+.vscode/
+.idea/
+*.kdev4/
+.cache/
+
+# Test exports / snapshots accidentally placed in the source tree
+4up_*.mp4
+4up_*.log
+snapshot_*.png
+test_*.mp4
+
+# Haiku-specific
+*.bak
