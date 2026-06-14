@@ -1,6 +1,7 @@
 # Build artifacts
 obj/
 TeslaViewer
+TeslaViewer.rsrc
 *.o
 *.d
 

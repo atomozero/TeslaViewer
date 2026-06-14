@@ -13,8 +13,11 @@ DEPS    = $(OBJS:.o=.d)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(NAME).rdef
 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
+	rc -o $(NAME).rsrc $(NAME).rdef
+	xres -o $@ $(NAME).rsrc
+	mimeset -f $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -25,7 +28,7 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 clean:
-	rm -rf $(OBJDIR) $(NAME)
+	rm -rf $(OBJDIR) $(NAME) $(NAME).rsrc
 
 run: $(NAME)
 	./$(NAME)
