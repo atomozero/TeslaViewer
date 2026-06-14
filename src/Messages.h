@@ -20,7 +20,8 @@ enum {
 	kMsgSearchChanged    = 'srch',
 	kMsgDateFilterChanged= 'dtfl',
 	kMsgOpenMap          = 'omap',
-	kMsgMapClosed        = 'mclo'
+	kMsgMapClosed        = 'mclo',
+	kMsgAbout            = 'abou'
 };
 
 #endif

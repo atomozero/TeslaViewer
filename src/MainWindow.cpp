@@ -163,6 +163,9 @@ MainWindow::_BuildUI()
 	fileMenu->AddItem(new BMenuItem("Export 4-up...",
 		new BMessage(kMsgExport)));
 	fileMenu->AddSeparatorItem();
+	fileMenu->AddItem(new BMenuItem("About TeslaViewer...",
+		new BMessage(kMsgAbout)));
+	fileMenu->AddSeparatorItem();
 	fileMenu->AddItem(new BMenuItem("Quit",
 		new BMessage(B_QUIT_REQUESTED), 'Q'));
 	fMenuBar->AddItem(fileMenu);
@@ -1022,6 +1025,24 @@ MainWindow::MessageReceived(BMessage* msg)
 		case kMsgMapClosed:
 			fMapWindow = NULL;
 			break;
+
+		case kMsgAbout:
+		{
+			BAlert* alert = new BAlert("About TeslaViewer",
+				"TeslaViewer for Haiku v1.0.0\n\n"
+				"Native viewer for Tesla Sentry and Dashcam clips.\n"
+				"4 cameras in sync, GPS map, alarm marker,\n"
+				"snapshots and 4-up MP4 export.\n\n"
+				"by atomozero\n"
+				"https://github.com/atomozero/TeslaViewer\n\n"
+				"This software may contain\n"
+				"traces of peanuts and LLM.\n\n"
+				"MIT License",
+				"OK", NULL, NULL,
+				B_WIDTH_AS_USUAL, B_INFO_ALERT);
+			alert->Go();
+			break;
+		}
 
 		case kMsgCameraMapChanged:
 			if (fCurrentEvent >= 0) {
