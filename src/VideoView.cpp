@@ -79,8 +79,7 @@ VideoView::_OpenTrack(const char* path)
 
 	for (int32 i = 0; i < fFile->CountTracks(); i++) {
 		BMediaTrack* t = fFile->TrackAt(i);
-		media_format f;
-		memset(&f, 0, sizeof(f));
+		media_format f = {};
 		if (t->EncodedFormat(&f) == B_OK && f.IsVideo()) {
 			fTrack = t;
 			break;
@@ -90,8 +89,7 @@ VideoView::_OpenTrack(const char* path)
 	if (fTrack == NULL)
 		return false;
 
-	media_format decoded;
-	memset(&decoded, 0, sizeof(decoded));
+	media_format decoded = {};
 	decoded.type = B_MEDIA_RAW_VIDEO;
 	decoded.u.raw_video = media_raw_video_format::wildcard;
 	decoded.u.raw_video.display.format = B_RGB32;
