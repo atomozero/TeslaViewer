@@ -1,0 +1,59 @@
+SUMMARY="Native viewer for Tesla Sentry/Dashcam recordings"
+DESCRIPTION="TeslaViewer is a native Haiku application to review Tesla \
+Sentry and Dashcam recordings from a TeslaCam USB drive.
+
+Features include a synchronized 2x2 grid of the four cameras \
+(front, back, left and right repeater), a global timeline that \
+auto-concatenates the 1-minute clips of an event, a red tick on the \
+slider marking the exact alarm instant from event.json, click-to-maximize \
+on each camera tile, playback speeds from 0.25x to 4x, an event list with \
+thumbnails and date-range filter, a GPS map with OpenStreetMap tiles and \
+clickable event pins, PNG snapshots and a 4-up MP4 export via ffmpeg.
+
+No conversion or transcoding is required: the original MP4 streams are \
+played as-is through BMediaKit."
+HOMEPAGE="https://github.com/atomozero/TeslaViewer"
+COPYRIGHT="2026 atomozero"
+LICENSE="MIT"
+REVISION="1"
+SOURCE_URI="https://github.com/atomozero/TeslaViewer/archive/refs/tags/v$portVersion.tar.gz"
+CHECKSUM_SHA256=""
+SOURCE_DIR="TeslaViewer-$portVersion"
+
+ARCHITECTURES="x86_64"
+
+PROVIDES="
+	teslaviewer = $portVersion
+	app:TeslaViewer = $portVersion
+	"
+REQUIRES="
+	haiku
+	cmd:ffmpeg6
+	cmd:curl
+	"
+
+BUILD_REQUIRES="
+	haiku_devel
+	"
+
+BUILD_PREREQUIRES="
+	cmd:g++
+	cmd:ld
+	cmd:make
+	cmd:mimeset
+	cmd:rc
+	cmd:xres
+	"
+
+BUILD()
+{
+	make $jobArgs
+}
+
+INSTALL()
+{
+	mkdir -p $appsDir
+	cp TeslaViewer $appsDir/
+
+	addAppDeskbarSymlink $appsDir/TeslaViewer TeslaViewer
+}
